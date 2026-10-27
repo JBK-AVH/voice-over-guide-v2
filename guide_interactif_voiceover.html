@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="fr" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide Complet des Fonctions VoiceOver - Accessible & Interactif</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Effet visuel dynamiquement appliqué sur la carte en cours de lecture vocalement */
+        .speaking {
+            border-color: #2563eb !important;
+            background-color: #eff6ff !important;
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.35);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-full flex flex-col font-sans">
+
+    <!-- En-tête fixe avec bouton de contrôle global -->
+    <header class="bg-slate-900 text-white py-6 px-4 shadow-lg sticky top-0 z-50 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+                <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight flex items-center gap-2">
+                    <span>📱</span> Guide Interactif VoiceOver
+                </h1>
+                <p class="text-slate-300 text-sm mt-1">36 fonctionnalités classées par niveau d'apprentissage avec vocalisation intégrée.</p>
+            </div>
+            <button onclick="stopSpeech()" class="w-full sm:w-auto bg-red-600 hover:bg-red-700 active:bg-red-800 text-white font-bold px-5 py-2.5 rounded-xl text-sm shadow transition flex items-center justify-center gap-2">
+                <span>⏹</span> Stop Vocalisation
+            </button>
+        </div>
+    </header>
+
+    <!-- Contenu principal -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-8 space-y-12">
+
+        <!-- SECTION 1 : BASIQUES -->
+        <section class="space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-3 border-b-2 border-emerald-500">
+                <div>
+                    <h2 class="text-2xl font-extrabold text-slate-900 flex items-center gap-2">
+                        <span class="w-4 h-4 rounded-full bg-emerald-500 inline-block"></span>
+                        1. Fonctionnalités Basiques
+                    </h2>
+                    <p class="text-slate-500 text-sm mt-0.5">Prise en main et gestes fondamentaux de navigation (12 fonctionnalités)</p>
+                </div>
+                <button onclick="speakGroup('basiques')" class="bg-emerald-100 hover:bg-emerald-200 text-emerald-900 font-semibold px-4 py-2 rounded-xl text-sm transition flex items-center gap-2 self-start sm:self-auto">
+                    <span>🔊</span> Écouter toute la section Basiques
+                </button>
+            </div>
+            
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" id="group-basiques">
+                <!-- 1 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Explorer au toucher</h3>
+                            <span class="text-emerald-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Découvrir vocalement les éléments situés sous votre doigt.</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Glissez un doigt sur n'importe quelle partie de l'écran.</p>
+                    </div>
+                </div>
+                <!-- 2 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Naviguer séquentiellement</h3>
+                            <span class="text-emerald-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Passer à l'élément suivant ou précédent dans l'ordre de la page.</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Balayez vers la droite (suivant) ou vers la gauche (précédent) avec un doigt.</p>
+                    </div>
+                </div>
+                <!-- 3 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Activer un élément</h3>
+                            <span class="text-emerald-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Ouvrir une application, valider un bouton ou suivre un lien sélectionné.</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Touchez deux fois rapidement l'écran n'importe où (double-tap).</p>
+                    </div>
+                </div>
+                <!-- 4 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Défiler la page</h3>
+                            <span class="text-emerald-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Faire défiler le contenu de haut en bas ou de gauche à droite.</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Balayez vers le haut ou vers le bas avec trois doigts.</p>
+                    </div>
+                </div>
+                <!-- 5 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Activer ou Désactiver VoiceOver</h3>
+                            <span class="text-emerald-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Lancer ou fermer rapidement le lecteur d'écran selon vos besoins.</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Triple-cliquez sur le bouton latéral/Home ou demandez à Siri "Active VoiceOver".</p>
+                    </div>
+                </div>
+                <!-- 6 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Lire le premier élément</h3>
+                            <span class="text-emerald-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Revenir immédiatement au tout début de l'écran courant.</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Touchez la partie supérieure de l'écran avec quatre doigts.</p>
+                    </div>
+                </div>
+                <!-- 7 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Lire le dernier élément</h3>
+                            <span class="text-emerald-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Se positionner instantanément sur le dernier composant en bas de l'écran.</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Touchez la partie inférieure de l'écran avec quatre doigts.</p>
+                    </div>
+                </div>
+                <!-- 8 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Faire taire la voix</h3>
+                            <span class="text-emerald-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Interrompre la parole immédiatement sans changer la sélection active.</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Touchez l'écran une fois avec deux doigts.</p>
+                    </div>
+                </div>
+                <!-- 9 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Ajuster le volume vocal</h3>
+                            <span class="text-emerald-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Adapter la puissance sonore de la synthèse vocale à votre environnement.</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Utilisez les boutons physiques de volume sur le côté de l'appareil.</p>
+                    </div>
+                </div>
+                <!-- 10 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Revenir en arrière (Geste Z)</h3>
+                            <span class="text-emerald-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Quitter la vue courante, fermer une boîte de dialogue ou revenir au menu précédent.</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Dessinez la lettre "Z" avec deux doigts sur l'écran (geste Scrub).</p>
+                    </div>
+                </div>
+                <!-- 11 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Sélectionner un champ de texte</h3>
+                            <span class="text-emerald-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Placer le curseur dans une zone de saisie et ouvrir le clavier virtuel.</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Touchez deux fois la zone de texte pour la cibler et faire apparaître le clavier.</p>
+                    </div>
+                </div>
+                <!-- 12 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Connaître l'heure et la batterie</h3>
+                            <span class="text-emerald-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Obtenir l'heure, le niveau de batterie ou l'état du réseau sans défiler.</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Touchez la barre d'état située tout en haut de l'écran.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2 : CROISIÈRE -->
+        <section class="space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-3 border-b-2 border-blue-500">
+                <div>
+                    <h2 class="text-2xl font-extrabold text-slate-900 flex items-center gap-2">
+                        <span class="w-4 h-4 rounded-full bg-blue-500 inline-block"></span>
+                        2. Fonctionnalités de Croisière
+                    </h2>
+                    <p class="text-slate-500 text-sm mt-0.5">Utilisation fluide, lecture suivie et productivité quotidienne (12 fonctionnalités)</p>
+                </div>
+                <button onclick="speakGroup('croisiere')" class="bg-blue-100 hover:bg-blue-200 text-blue-900 font-semibold px-4 py-2 rounded-xl text-sm transition flex items-center gap-2 self-start sm:self-auto">
+                    <span>🔊</span> Écouter toute la section Croisière
+                </button>
+            </div>
+            
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" id="group-croisiere">
+                <!-- 1 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Utiliser le Rotor</h3>
+                            <span class="text-blue-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Changer le mode de navigation (par en-têtes, liens, mots, caractères) ou les réglages vocaux.</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Tournez deux doigts sur l'écran comme sur un cadran virtuel, puis balayez de haut en bas.</p>
+                    </div>
+                </div>
+                <!-- 2 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Lire à partir du début</h3>
+                            <span class="text-blue-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Lancer une lecture vocale continue depuis le haut de la page.</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Balayez vers le haut avec deux doigts.</p>
+                    </div>
+                </div>
+                <!-- 3 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Lire depuis la sélection</h3>
+                            <span class="text-blue-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Continuer la lecture automatique à partir de l'élément sélectionné.</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Balayez vers le bas avec deux doigts.</p>
+                    </div>
+                </div>
+                <!-- 4 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Magic Tap (Toucher magique)</h3>
+                            <span class="text-blue-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Déclencher l'action principale rapide (répondre/raccrocher un appel, lancer/pauser la musique).</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Touchez deux fois rapidement l'écran avec deux doigts.</p>
+                    </div>
+                </div>
+                <!-- 5 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Ajuster le débit vocal</h3>
+                            <span class="text-blue-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Modifier la vitesse de la voix pour lire plus vite ou plus lentement.</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Sélectionnez "Débit vocal" dans le Rotor, puis balayez vers le haut ou le bas.</p>
+                    </div>
+                </div>
+                <!-- 6 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Saisie au toucher (Touch Typing)</h3>
+                            <span class="text-blue-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Accélérer la frappe au clavier virtuel.</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Glissez le doigt jusqu'à la touche désirée et levez-le pour valider la lettre.</p>
+                    </div>
+                </div>
+                <!-- 7 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Dictée vocale</h3>
+                            <span class="text-blue-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Saisir du texte directement avec la voix sans passer par le clavier.</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Double-touchez l'écran à deux doigts lorsque le clavier est actif.</p>
+                    </div>
+                </div>
+                <!-- 8 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Changer de page Home</h3>
+                            <span class="text-blue-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Naviguer entre les différents écrans d'accueil d'applications.</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Balayez vers la gauche ou la droite avec trois doigts.</p>
+                    </div>
+                </div>
+                <!-- 9 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Centre de contrôle</h3>
+                            <span class="text-blue-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Ouvrir les réglages rapides (Wi-Fi, Bluetooth, Luminosité).</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Toucher la barre d'état haut, puis balayer vers le haut avec trois doigts.</p>
+                    </div>
+                </div>
+                <!-- 10 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Centre de notifications</h3>
+                            <span class="text-blue-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Consulter rapidement l'historique des alertes et messages reçus.</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Toucher la barre d'état haut, puis balayer vers le bas avec trois doigts.</p>
+                    </div>
+                </div>
+                <!-- 11 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Actions personnalisées</h3>
+                            <span class="text-blue-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Réaliser des actions contextuelles rapides (ex: supprimer un e-mail dans une liste).</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Balayez vers le haut ou vers le bas avec un doigt sur l'élément.</p>
+                    </div>
+                </div>
+                <!-- 12 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Sélectionner / corriger du texte</h3>
+                            <span class="text-blue-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Vérifier la frappe mot par mot ou caractère par caractère.</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Réglez le Rotor sur "Mots" ou "Caractères" puis balayez vers le haut ou le bas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3 : AVANCÉES -->
+        <section class="space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-3 border-b-2 border-purple-500">
+                <div>
+                    <h2 class="text-2xl font-extrabold text-slate-900 flex items-center gap-2">
+                        <span class="w-4 h-4 rounded-full bg-purple-500 inline-block"></span>
+                        3. Fonctionnalités Avancées
+                    </h2>
+                    <p class="text-slate-500 text-sm mt-0.5">Outils d'expertise, autonomie renforcée et personnalisation (12 fonctionnalités)</p>
+                </div>
+                <button onclick="speakGroup('avancees')" class="bg-purple-100 hover:bg-purple-200 text-purple-900 font-semibold px-4 py-2 rounded-xl text-sm transition flex items-center gap-2 self-start sm:self-auto">
+                    <span>🔊</span> Écouter toute la section Avancées
+                </button>
+            </div>
+            
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" id="group-avancees">
+                <!-- 1 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Reconnaissance VoiceOver (IA)</h3>
+                            <span class="text-purple-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Obtenir des descriptions d'images et analyser l'interface d'applications non accessibles.</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Touchez l'écran avec trois doigts pour lancer une description d'image.</p>
+                    </div>
+                </div>
+                <!-- 2 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Masque d'écran (Screen Curtain)</h3>
+                            <span class="text-purple-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Éteindre l'affichage visuel pour protéger sa vie privée tout en conservant le son.</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Touchez trois fois rapidement l'écran avec trois doigts.</p>
+                    </div>
+                </div>
+                <!-- 3 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Mute sonore</h3>
+                            <span class="text-purple-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Mettre en sourdine l'audio de VoiceOver sans éteindre l'écran.</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Touchez deux fois l'écran avec trois doigts.</p>
+                    </div>
+                </div>
+                <!-- 4 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Saisie Braille à l'écran</h3>
+                            <span class="text-purple-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Taper du texte directement en braille sur l'écran tactile.</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Tournez le Rotor sur "Saisie Braille à l'écran".</p>
+                    </div>
+                </div>
+                <!-- 5 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Plage Braille Bluetooth</h3>
+                            <span class="text-purple-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Connecter un afficheur braille éphémère physique pour lire et écrire silencieusement.</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Associez l'appareil dans Réglages > Accessibilité > VoiceOver > Braille.</p>
+                    </div>
+                </div>
+                <!-- 6 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Personnalisation des gestes</h3>
+                            <span class="text-purple-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Réattribuer des gestes spécifiques à vos raccourcis préférés.</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Allez dans Réglages > Accessibilité > VoiceOver > Commandes > Raccourcis tactiles.</p>
+                    </div>
+                </div>
+                <!-- 7 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Mode entraînement (Practice)</h3>
+                            <span class="text-purple-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Tester les gestes sans risquer de modifier quoi que ce soit sur l'appareil.</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Touchez quatre fois l'écran avec deux doigts.</p>
+                    </div>
+                </div>
+                <!-- 8 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Copier le dernier énoncé</h3>
+                            <span class="text-purple-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Placer instantanément dans le presse-papier le dernier texte lu par VoiceOver.</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Touchez quatre fois l'écran avec trois doigts.</p>
+                    </div>
+                </div>
+                <!-- 9 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Sons et retours haptiques</h3>
+                            <span class="text-purple-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Activer ou couper les retours vibratoires et effets audio lors du survol.</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Allez dans Réglages > Accessibilité > VoiceOver > Audio > Sons et vibrations.</p>
+                    </div>
+                </div>
+                <!-- 10 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Détection de portes/personnes (LiDAR)</h3>
+                            <span class="text-purple-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Guider vos déplacements physiques en identifiant les obstacles environnants.</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Lancez l'application Loupe intégrée à l'iPhone en mode détection.</p>
+                    </div>
+                </div>
+                <!-- 11 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Activités (Changement de voix)</h3>
+                            <span class="text-purple-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Adapter automatiquement la voix et le débit selon l'application active.</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Configurer dans Réglages > Accessibilité > VoiceOver > Activités.</p>
+                    </div>
+                </div>
+                <!-- 12 -->
+                <div class="card bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between" onclick="speakCard(this)">
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <h3 class="font-bold text-base text-slate-900 title">Fenêtre de sous-titrage</h3>
+                            <span class="text-purple-600 text-lg">🔊</span>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-600"><strong>Usage :</strong> Afficher à l'écran sous forme de texte ce que VoiceOver dit (idéal pour les formateurs).</p>
+                        <p class="mt-1.5 text-xs text-slate-600"><strong>Mise en œuvre :</strong> Activez "Panneau sous-titres" dans Réglages > VoiceOver.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Pied de page -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-sm text-slate-500 mt-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>Guide complet VoiceOver — 36 fonctionnalités interactives pour GitHub Pages.</p>
+        </div>
+    </footer>
+
+    <!-- Moteur de synthèse vocale Web Speech API -->
+    <script>
+        const synth = window.speechSynthesis;
+        let currentCard = null;
+
+        // Arrêter toute vocalisation en cours
+        function stopSpeech() {
+            if (synth) {
+                synth.cancel();
+            }
+            if (currentCard) {
+                currentCard.classList.remove('speaking');
+                currentCard = null;
+            }
+        }
+
+        // Fonction générique de lecture vocale
+        function speakText(text, cardElement = null) {
+            if (!synth) {
+                alert("Votre navigateur ne supporte pas la synthèse vocale intégrée.");
+                return;
+            }
+
+            // Arrêt des lectures précédentes
+            stopSpeech();
+
+            if (cardElement) {
+                currentCard = cardElement;
+                currentCard.classList.add('speaking');
+            }
+
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'fr-FR';
+            utterance.rate = 1.0;
+
+            // Réinitialisation de l'affichage quand la parole se termine
+            utterance.onend = function() {
+                if (cardElement) {
+                    cardElement.classList.remove('speaking');
+                    currentCard = null;
+                }
+            };
+
+            utterance.onerror = function() {
+                if (cardElement) {
+                    cardElement.classList.remove('speaking');
+                    currentCard = null;
+                }
+            };
+
+            synth.speak(utterance);
+        }
+
+        // Lecture vocale d'une carte spécifique
+        function speakCard(cardElement) {
+            const title = cardElement.querySelector('.title').innerText;
+            const paragraphs = cardElement.querySelectorAll('p');
+            const textToSpeak = title + ". " + Array.from(paragraphs).map(p => p.innerText).join(". ");
+            speakText(textToSpeak, cardElement);
+        }
+
+        // Lecture séquentielle de toute une section
+        function speakGroup(groupId) {
+            const container = document.getElementById('group-' + groupId);
+            const cards = container.querySelectorAll('.card');
+            let fullText = "Section " + groupId + ". ";
+            
+            cards.forEach((card, index) => {
+                const title = card.querySelector('.title').innerText;
+                const paragraphs = card.querySelectorAll('p');
+                fullText += `Fonctionnalité ${index + 1}: ${title}. ` + Array.from(paragraphs).map(p => p.innerText).join(". ") + ". ";
+            });
+
+            speakText(fullText);
+        }
+    </script>
+</body>
+</html>
